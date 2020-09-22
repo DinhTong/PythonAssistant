@@ -1,23 +1,14 @@
-import pyttsx3
+def old_process_incoming_data(data_list):
+    temp = []
+    for datum in data_list:
+        temp.append(datum//2*67 - 5)
+    return temp
 
-class _TTS:
+def process_incoming_data(data_list):
+    return [datum//2*67 - 5 for datum in data_list]
 
-    engine = None
-    rate = None
-    def __init__(self):
-        self.engine = pyttsx3.init()
-
-
-    def start(self,text_):
-        self.engine.say(text_)
-        self.engine.runAndWait()
-
-
-tts = _TTS()
-tts.start("hello world")
-del(tts)
-
-
-tts = _TTS()
-tts.start('what can i help you')
-del(tts)
+if __name__ == "__main__":
+    data_list = [0,5,10,15]
+    print (old_process_incoming_data(data_list))
+    print (process_incoming_data(data_list))
+    print (old_process_incoming_data(data_list) == process_incoming_data(data_list))
